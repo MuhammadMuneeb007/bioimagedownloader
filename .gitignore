@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Output files
+Output/
+output/
+*.png
+*.svg
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.txt
+!requirements.txt
+!README.md
+
+# Logs
+*.log
+logs/
+
+# Chrome driver
+chromedriver
+chromedriver.exe
+*.chromedriver
+
+# Environment variables
+.env
+.env.local
+
+# PyPI credentials (NEVER commit these!)
+.pypirc
+*.pypirc
+credentials.txt
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
