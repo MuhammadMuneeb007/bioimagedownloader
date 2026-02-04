@@ -20,11 +20,7 @@ A Python package to download biology and science icons/images from multiple webs
 - **Flaticon** (flaticon.com) - General icon library
 - **NounProject** (thenounproject.com) - Icon collection
 - **SVGRepo** (svgrepo.com) - SVG icon repository
-- **SciDraw** (scidraw.io) - Scientific drawings
-- **Freepik** (freepik.com) - Vector graphics
-- **Vecteezy** (vecteezy.com) - Vector art
-- **Pixabay** (pixabay.com) - Free images
-- **OpenClipart** (openclipart.org) - Clipart library
+ 
 
 ---
 
@@ -177,124 +173,7 @@ scrape_bioicons(keyword, folder)
 scrape_bioart(keyword, folder)
 scrape_flaticon(keyword, folder)
 ```
-
-#### Available Scrapers
-
-All scraper functions follow this pattern:
-
-```python
-scrape_<source>(keyword: str, folder: str) -> None
-```
-
-**Parameters:**
-- `keyword` (str): Search term (e.g., "DNA", "neuron", "protein")
-- `folder` (str): Output directory path where files will be saved
-
-**Returns:** None (files are saved to disk)
-
-#### Individual Scrapers
-
-**1. BioIcons**
-```python
-from scrapers import scrape_bioicons
-scrape_bioicons("DNA", "output/DNA")
-# Downloads SVG files from bioicons.com
-```
-
-**2. BioArt**
-```python
-from scrapers import scrape_bioart
-scrape_bioart("drug", "output/drug")
-# Downloads PNG images from bioart.niaid.nih.gov
-```
-
-**3. Flaticon**
-```python
-from scrapers import scrape_flaticon
-scrape_flaticon("biology", "output/biology")
-# Downloads PNG/SVG icons from flaticon.com
-```
-
-**4. NounProject**
-```python
-from scrapers import scrape_nounproject
-scrape_nounproject("DNA", "output/DNA")
-# Downloads PNG icons from thenounproject.com
-```
-
-**5. SVGRepo**
-```python
-from scrapers import scrape_svgrepo
-scrape_svgrepo("biology", "output/biology")
-# Downloads SVG files from svgrepo.com
-```
-
-**6. SciDraw**
-```python
-from scrapers import scrape_scidraw
-scrape_scidraw("cell", "output/cell")
-# Downloads scientific drawings from scidraw.io
-```
-
-**7. Freepik**
-```python
-from scrapers import scrape_freepik
-scrape_freepik("icon", "output/icon")
-# Saves links from freepik.com
-```
-
-**8. Vecteezy**
-```python
-from scrapers import scrape_vecteezy
-scrape_vecteezy("vector", "output/vector")
-# Saves links from vecteezy.com
-```
-
-**9. Pixabay**
-```python
-from scrapers import scrape_pixabay
-scrape_pixabay("science", "output/science")
-# Downloads images from pixabay.com
-```
-
-**10. OpenClipart**
-```python
-from scrapers import scrape_openclipart
-scrape_openclipart("biology", "output/biology")
-# Downloads clipart from openclipart.org
-```
-
-#### Using Multiple Scrapers
-
-```python
-from scrapers import (
-    scrape_bioicons,
-    scrape_scidraw,
-    scrape_bioart,
-    scrape_flaticon,
-    scrape_nounproject,
-    scrape_svgrepo,
-)
-
-keyword = "DNA"
-folder = "output/DNA"
-
-# Run all scrapers
-scrapers = [
-    scrape_bioicons,
-    scrape_scidraw,
-    scrape_bioart,
-    scrape_flaticon,
-    scrape_nounproject,
-    scrape_svgrepo,
-]
-
-for scraper in scrapers:
-    try:
-        scraper(keyword, folder)
-    except Exception as e:
-        print(f"Error in {scraper.__name__}: {e}")
-```
+ 
 
 ### Advanced Usage Examples
 
@@ -367,14 +246,7 @@ Output/
 └── protein/
     └── ...
 ```
-
-**File Naming Convention:**
-- `{source}_{keyword}_{number}.{extension}`
-- Examples: `bioicons_DNA_1.svg`, `bioart_drug_1.png`
-
-**Link Files:**
-- When direct download fails, links are saved to `{source}_links.txt` files
-- Example: `nounproject_links.txt`, `flaticon_links.txt`
+ 
 
 ### Configuration
 
