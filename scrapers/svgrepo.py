@@ -4,7 +4,8 @@ import os
 import time
 from urllib.parse import urljoin, quote
 from bs4 import BeautifulSoup
-from .utils import get_driver, download_file, save_links
+from . import utils
+from .utils import download_file, save_links
 
 
 def scrape_svgrepo(keyword, folder):
@@ -12,7 +13,7 @@ def scrape_svgrepo(keyword, folder):
     print(f"\n[SVGRepo] Searching for: {keyword}")
     driver = None
     try:
-        driver = get_driver()
+        driver = utils.get_driver()
         
         # Use the correct SVGRepo URL format
         url = f"https://www.svgrepo.com/vectors/{quote(keyword)}/"

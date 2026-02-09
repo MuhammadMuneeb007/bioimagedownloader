@@ -10,7 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
-from .utils import get_driver, download_file, save_links
+from . import utils
+from .utils import download_file, save_links
 
 
 def _find_search_input(driver, timeout: int = 15):
@@ -37,7 +38,7 @@ def scrape_scidraw(keyword, folder):
     print(f"\n[SciDraw] Searching for: {keyword}")
     driver = None
     try:
-        driver = get_driver()
+        driver = utils.get_driver()
 
         # 1) Open homepage
         driver.get("https://scidraw.io/")

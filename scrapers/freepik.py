@@ -4,7 +4,7 @@ import os
 import time
 from urllib.parse import urljoin, quote
 from bs4 import BeautifulSoup
-from .utils import get_driver
+from . import utils
 
 
 def scrape_freepik(keyword, folder):
@@ -12,7 +12,7 @@ def scrape_freepik(keyword, folder):
     print(f"\n[Freepik] Searching for: {keyword}")
     driver = None
     try:
-        driver = get_driver()
+        driver = utils.get_driver()
         url = f"https://www.freepik.com/search?format=search&query={quote(keyword)}+icon"
         driver.get(url)
         time.sleep(4)

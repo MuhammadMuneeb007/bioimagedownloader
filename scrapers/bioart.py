@@ -4,7 +4,8 @@ import os
 import time
 from urllib.parse import quote, urljoin
 from bs4 import BeautifulSoup
-from .utils import get_driver, download_file, save_links
+from . import utils
+from .utils import download_file, save_links
 
 
 def scrape_bioart(keyword, folder):
@@ -12,7 +13,7 @@ def scrape_bioart(keyword, folder):
     print(f"\n[BioArt] Searching for: {keyword}")
     driver = None
     try:
-        driver = get_driver()
+        driver = utils.get_driver()
         
         # Use the correct BioArt URL format
         url = f"https://bioart.niaid.nih.gov/discover?q={quote(keyword)}&sort=relevance"

@@ -4,7 +4,8 @@ import os
 import time
 from urllib.parse import urljoin, quote
 from bs4 import BeautifulSoup
-from .utils import get_driver, download_file, save_links
+from . import utils
+from .utils import download_file, save_links
 
 
 def scrape_openclipart(keyword, folder):
@@ -12,7 +13,7 @@ def scrape_openclipart(keyword, folder):
     print(f"\n[OpenClipart] Searching for: {keyword}")
     driver = None
     try:
-        driver = get_driver()
+        driver = utils.get_driver()
         url = f"https://openclipart.org/search/?query={quote(keyword)}"
         driver.get(url)
         time.sleep(3)

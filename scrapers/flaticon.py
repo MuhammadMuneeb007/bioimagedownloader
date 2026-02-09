@@ -4,7 +4,8 @@ import os
 import time
 from urllib.parse import urljoin, quote
 from bs4 import BeautifulSoup
-from .utils import get_driver, download_file, save_links
+from . import utils
+from .utils import download_file, save_links
 
 
 def scrape_flaticon(keyword, folder):
@@ -12,7 +13,7 @@ def scrape_flaticon(keyword, folder):
     print(f"\n[Flaticon] Searching for: {keyword}")
     driver = None
     try:
-        driver = get_driver()
+        driver = utils.get_driver()
         
         # Use the correct Flaticon URL format
         url = f"https://www.flaticon.com/search?word={quote(keyword)}"

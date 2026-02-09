@@ -1,0 +1,596 @@
+Metadata-Version: 2.4
+Name: bioimagedownloader
+Version: 1.0.0
+Summary: Download biology/science icons from multiple websites
+Home-page: https://github.com/yourusername/bioimagedownloader
+Author: Your Name
+Author-email: Your Name <your.email@example.com>
+License: MIT
+Project-URL: Homepage, https://github.com/yourusername/bioimagedownloader
+Project-URL: Documentation, https://github.com/yourusername/bioimagedownloader#readme
+Project-URL: Repository, https://github.com/yourusername/bioimagedownloader
+Project-URL: Issues, https://github.com/yourusername/bioimagedownloader/issues
+Keywords: biology,icons,images,scraper,download,science
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
+# BioImageDownloader
+
+A Python package to download biology and science icons/images from multiple websites including BioIcons, BioArt, Flaticon, NounProject, SVGRepo, and more.
+
+[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Features
+
+- 🔍 **Multiple Sources**: Download from 10+ icon/image websites
+- 🤖 **Headless Mode**: Runs in background (default)
+- 📦 **Auto-Organization**: Files organized by keyword automatically
+- 🔗 **Link Fallback**: Saves links when direct download fails
+- 🛡️ **Bot Detection Bypass**: Uses undetected Chrome driver
+
+## Supported Websites
+
+- **BioIcons** (bioicons.com) - Biology-focused SVG icons
+- **BioArt** (bioart.niaid.nih.gov) - Science visuals from NIAID
+- **Flaticon** (flaticon.com) - General icon library
+- **NounProject** (thenounproject.com) - Icon collection
+- **SVGRepo** (svgrepo.com) - SVG icon repository
+- **SciDraw** (scidraw.io) - Scientific drawings
+- **Freepik** (freepik.com) - Vector graphics
+- **Vecteezy** (vecteezy.com) - Vector art
+- **Pixabay** (pixabay.com) - Free images
+- **OpenClipart** (openclipart.org) - Clipart library
+
+## Installation
+
+### Method 1: Install from GitHub (Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/bioimagedownloader.git
+cd bioimagedownloader
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install the package
+pip install -e .
+```
+
+### Method 2: Build and Install Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/bioimagedownloader.git
+cd bioimagedownloader
+
+# Build and install automatically
+python build_package.py
+```
+
+This will:
+1. Build the package into `dist/` folder
+2. Automatically install it into your current environment
+
+### Method 3: Install from PyPI (After Upload)
+
+```bash
+pip install bioimagedownloader
+```
+
+### Method 4: Install from Local Wheel
+
+After building, install the wheel directly:
+
+```bash
+pip install dist/bioimagedownloader-*.whl
+```
+
+## Requirements
+
+- **Python**: 3.7 or higher
+- **Chrome Browser**: Must be installed on your system
+- **Dependencies**: Automatically installed with the package
+  - undetected-chromedriver
+  - selenium
+  - requests
+  - beautifulsoup4
+  - lxml
+
+## Quick Start
+
+### Command Line Usage
+
+```bash
+# Basic usage - single keyword
+bioimagedownloader DNA
+
+# Multiple keywords (comma-separated)
+bioimagedownloader DNA, neuron, protein
+
+# Or use the Python script directly
+python download_bio_icons.py DNA, neuron, protein, mitochondria
+```
+
+### Python Script Usage
+
+```python
+from scrapers import scrape_bioicons, scrape_bioart, scrape_flaticon
+
+# Download icons for a keyword
+keyword = "DNA"
+folder = "output/DNA"
+
+scrape_bioicons(keyword, folder)
+scrape_bioart(keyword, folder)
+scrape_flaticon(keyword, folder)
+```
+
+## Available Functions
+
+All scraper functions follow the same pattern: `scrape_<source>(keyword, folder)`
+
+### Function Signature
+
+```python
+scrape_<source>(keyword: str, folder: str) -> None
+```
+
+**Parameters:**
+- `keyword` (str): Search term (e.g., "DNA", "neuron", "protein")
+- `folder` (str): Output directory path where files will be saved
+
+**Returns:** None (files are saved to disk)
+
+### Available Scrapers
+
+#### 1. BioIcons
+```python
+from scrapers import scrape_bioicons
+
+scrape_bioicons("DNA", "output/DNA")
+# Downloads SVG files from bioicons.com
+```
+
+#### 2. BioArt
+```python
+from scrapers import scrape_bioart
+
+scrape_bioart("drug", "output/drug")
+# Downloads PNG images from bioart.niaid.nih.gov
+```
+
+#### 3. Flaticon
+```python
+from scrapers import scrape_flaticon
+
+scrape_flaticon("biology", "output/biology")
+# Downloads PNG/SVG icons from flaticon.com
+```
+
+#### 4. NounProject
+```python
+from scrapers import scrape_nounproject
+
+scrape_nounproject("DNA", "output/DNA")
+# Downloads PNG icons from thenounproject.com
+```
+
+#### 5. SVGRepo
+```python
+from scrapers import scrape_svgrepo
+
+scrape_svgrepo("biology", "output/biology")
+# Downloads SVG files from svgrepo.com
+```
+
+#### 6. SciDraw
+```python
+from scrapers import scrape_scidraw
+
+scrape_scidraw("cell", "output/cell")
+# Downloads scientific drawings from scidraw.io
+```
+
+#### 7. Freepik
+```python
+from scrapers import scrape_freepik
+
+scrape_freepik("icon", "output/icon")
+# Saves links from freepik.com
+```
+
+#### 8. Vecteezy
+```python
+from scrapers import scrape_vecteezy
+
+scrape_vecteezy("vector", "output/vector")
+# Saves links from vecteezy.com
+```
+
+#### 9. Pixabay
+```python
+from scrapers import scrape_pixabay
+
+scrape_pixabay("science", "output/science")
+# Downloads images from pixabay.com
+```
+
+#### 10. OpenClipart
+```python
+from scrapers import scrape_openclipart
+
+scrape_openclipart("biology", "output/biology")
+# Downloads clipart from openclipart.org
+```
+
+### Using All Scrapers
+
+```python
+from scrapers import (
+    scrape_bioicons,
+    scrape_scidraw,
+    scrape_bioart,
+    scrape_flaticon,
+    scrape_nounproject,
+    scrape_freepik,
+    scrape_vecteezy,
+    scrape_pixabay,
+    scrape_svgrepo,
+    scrape_openclipart,
+)
+
+keyword = "DNA"
+folder = "output/DNA"
+
+# Run all scrapers
+scrapers = [
+    scrape_bioicons,
+    scrape_scidraw,
+    scrape_bioart,
+    scrape_flaticon,
+    scrape_nounproject,
+    scrape_svgrepo,
+]
+
+for scraper in scrapers:
+    try:
+        scraper(keyword, folder)
+    except Exception as e:
+        print(f"Error in {scraper.__name__}: {e}")
+```
+
+## Output Structure
+
+After running, your files will be organized like this:
+
+```
+Output/
+├── DNA/
+│   ├── bioicons_DNA_1.svg
+│   ├── bioicons_DNA_2.svg
+│   ├── bioart_DNA_1.png
+│   ├── flaticon_DNA_1.png
+│   ├── flaticon_DNA_2.png
+│   ├── nounproject_links.txt
+│   ├── svgrepo_DNA_1.svg
+│   └── ...
+├── neuron/
+│   ├── bioicons_neuron_1.svg
+│   └── ...
+└── protein/
+    └── ...
+```
+
+## Headless Mode
+
+**By default, all scrapers run in headless mode** (no browser window). This is ideal for:
+- Server environments
+- Background processing
+- Automated scripts
+
+To disable headless mode (show browser), modify `scrapers/utils.py`:
+
+```python
+def get_driver(headless=False):  # Change to False
+    ...
+```
+
+Or use the headless script:
+
+```bash
+python download_bio_icons_headless.py DNA
+```
+
+## Configuration
+
+### Custom Output Directory
+
+Modify the `base_folder` variable in `download_bio_icons.py`:
+
+```python
+base_folder = "MyCustomOutput"  # Change this
+```
+
+### Custom Scraper Selection
+
+Edit the `scrapers` list in `download_bio_icons.py`:
+
+```python
+scrapers = [
+    scrape_bioicons,      # Enable
+    # scrape_scidraw,     # Disable
+    scrape_bioart,        # Enable
+    # ... etc
+]
+```
+
+## Examples
+
+### Example 1: Download DNA Icons
+
+```python
+from scrapers import scrape_bioicons, scrape_svgrepo
+
+scrape_bioicons("DNA", "my_output/DNA")
+scrape_svgrepo("DNA", "my_output/DNA")
+```
+
+### Example 2: Batch Processing
+
+```python
+from scrapers import scrape_bioicons
+import os
+
+keywords = ["DNA", "RNA", "protein", "cell", "mitochondria"]
+base_folder = "biology_icons"
+
+for keyword in keywords:
+    folder = os.path.join(base_folder, keyword)
+    os.makedirs(folder, exist_ok=True)
+    scrape_bioicons(keyword, folder)
+```
+
+### Example 3: Custom Scraper Function
+
+```python
+from scrapers import scrape_bioicons
+from scrapers.utils import get_driver, download_file
+
+def custom_scraper(keyword, folder):
+    """Custom scraper example."""
+    driver = get_driver(headless=True)
+    try:
+        # Your custom scraping logic here
+        driver.get(f"https://example.com/search?q={keyword}")
+        # ... process results
+    finally:
+        driver.quit()
+
+# Use it
+custom_scraper("DNA", "output/DNA")
+```
+
+## Building the Package
+
+### Build for Distribution
+
+```bash
+# Build source and wheel distributions
+python build_package.py
+
+# Or manually
+python -m build
+```
+
+This creates:
+- `dist/bioimagedownloader-1.0.0.tar.gz` (source distribution)
+- `dist/bioimagedownloader-1.0.0-py3-none-any.whl` (wheel distribution)
+
+### Install Built Package
+
+```bash
+pip install dist/bioimagedownloader-*.whl
+```
+
+## Development
+
+### Setup Development Environment
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/bioimagedownloader.git
+cd bioimagedownloader
+
+# Install in editable mode
+pip install -e .
+
+# Install development dependencies
+pip install -r requirements.txt
+```
+
+### Running Tests
+
+```bash
+# Test installation
+pip show bioimagedownloader
+
+# Test command
+bioimagedownloader DNA
+
+# Test in Python
+python -c "from scrapers import scrape_bioicons; scrape_bioicons('DNA', 'test')"
+```
+
+## Troubleshooting
+
+### "Command not found" after installation
+
+- Make sure your Python Scripts directory is in PATH
+- Try: `python -m bioimagedownloader DNA` instead
+- Or use: `python download_bio_icons.py DNA`
+
+### "Module not found" error
+
+- Verify installation: `pip show bioimagedownloader`
+- Reinstall: `pip install --force-reinstall -e .`
+
+### Chrome driver issues
+
+- Ensure Chrome browser is installed
+- Update Chrome to latest version
+- The package uses `undetected-chromedriver` which auto-downloads the driver
+
+### No results found
+
+- Check your internet connection
+- Some websites may have rate limiting
+- Try different keywords
+- Check if the website structure has changed
+
+### Headless mode not working
+
+- Verify `scrapers/utils.py` has `headless=True` as default
+- Check Chrome is installed correctly
+- Try running with visible browser first to debug
+
+## API Reference
+
+### Core Functions
+
+#### `get_driver(headless=True)`
+
+Creates and returns an undetected Chrome driver instance.
+
+**Parameters:**
+- `headless` (bool): Run browser in headless mode. Default: `True`
+
+**Returns:** Chrome driver instance
+
+**Example:**
+```python
+from scrapers.utils import get_driver
+
+driver = get_driver(headless=True)
+driver.get("https://example.com")
+driver.quit()
+```
+
+#### `download_file(url, filepath, headers=None)`
+
+Downloads a file from URL to filepath.
+
+**Parameters:**
+- `url` (str): File URL to download
+- `filepath` (str): Local path to save file
+- `headers` (dict, optional): HTTP headers
+
+**Returns:** `True` if successful, `False` otherwise
+
+**Example:**
+```python
+from scrapers.utils import download_file
+
+success = download_file("https://example.com/image.svg", "output/image.svg")
+```
+
+#### `save_links(filepath, links, source_name)`
+
+Saves a list of links to a text file.
+
+**Parameters:**
+- `filepath` (str): Path to save links file
+- `links` (list): List of URL strings
+- `source_name` (str): Name of the source (for file header)
+
+**Example:**
+```python
+from scrapers.utils import save_links
+
+links = ["https://example.com/1", "https://example.com/2"]
+save_links("output/links.txt", links, "Example")
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Adding a New Scraper
+
+1. Create a new file in `scrapers/` directory (e.g., `scrapers/newsite.py`)
+2. Implement the scraper function:
+   ```python
+   def scrape_newsite(keyword, folder):
+       """Scrape newsite.com for icons."""
+       driver = get_driver()
+       try:
+           # Your scraping logic
+           pass
+       finally:
+           driver.quit()
+   ```
+3. Add to `scrapers/__init__.py`
+4. Add to `download_bio_icons.py` scrapers list
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+This tool is for educational and research purposes only. Please respect the terms of service of the websites you're scraping from. Always check the licensing requirements of downloaded images/icons before commercial use.
+
+## Acknowledgments
+
+- Thanks to all the icon/image providers
+- Built with [undetected-chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) for bypassing bot detection
+
+## Support
+
+For issues and questions:
+- Open an issue on [GitHub Issues](https://github.com/yourusername/bioimagedownloader/issues)
+- Check existing issues for solutions
+
+## Changelog
+
+### Version 1.0.0
+- Initial release
+- Support for 10+ icon/image sources
+- Headless mode support (default)
+- Automatic file organization
+- Link fallback when downloads fail
+
+## Roadmap
+
+- [ ] Add more icon sources
+- [ ] Support for batch keyword processing
+- [ ] Configuration file support
+- [ ] Progress bars for downloads
+- [ ] Duplicate detection
+- [ ] Image format conversion
+
+---
+
+**Made with ❤️ for the scientific community**

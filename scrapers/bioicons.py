@@ -5,7 +5,8 @@ import time
 from urllib.parse import urljoin, quote
 
 from bs4 import BeautifulSoup
-from .utils import get_driver, download_file, save_links
+from . import utils
+from .utils import download_file, save_links
 
 
 def scrape_bioicons(keyword, folder):
@@ -13,7 +14,7 @@ def scrape_bioicons(keyword, folder):
     print(f"\n[BioIcons] Searching for: {keyword}")
     driver = None
     try:
-        driver = get_driver()
+        driver = utils.get_driver()
 
         # Directly load the URL with query parameter
         url = f"https://bioicons.com/?query={quote(keyword)}"
